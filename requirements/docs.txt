@@ -26,9 +26,8 @@ docutils==0.19
     # via
     #   pydata-sphinx-theme
     #   sphinx
-elasticsearch==7.13.4
+elasticsearch==7.15.2
     # via
-    #   -c requirements/common_constraints.txt
     #   -c requirements/constraints.txt
     #   elasticsearch-dsl
 elasticsearch-dsl==7.4.1
