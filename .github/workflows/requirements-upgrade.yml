@@ -1,6 +1,7 @@
 name: Upgrade Requirements
 
 on:
+  pull_request:
   schedule:
     # will start the job at midnight every monday (UTC)
     - cron: '0 0 * * 1'
