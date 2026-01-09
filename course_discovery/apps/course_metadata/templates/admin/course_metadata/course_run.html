@@ -6,16 +6,17 @@
 {% endblock %}
 
 {% block extrastyle %}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+  {{ block.super }}
+  {{ form.media.css }}
 {% endblock %}
 
 {% block extrahead %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        $('.select2').select2();
-    });
-</script>
+  {{ block.super }}
+{% endblock %}
+
+{% block extrabody %}
+  {{ block.super }}
+  {{ form.media.js }}
 {% endblock %}
 
 {% block content %}

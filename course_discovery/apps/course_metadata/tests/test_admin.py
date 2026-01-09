@@ -9,6 +9,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.http import HttpRequest
 from django.test import LiveServerTestCase, TestCase
 from django.test.utils import override_settings
+from django.templatetags.static import static
 from django.urls import reverse
 from rest_framework.status import HTTP_200_OK
 from selenium import webdriver
@@ -85,6 +86,10 @@ class AdminTests(SiteMixin, TestCase):
         """ Verify in admin panel program detail form load successfully. """
         response = self.client.get(reverse('admin:course_metadata_program_change', args=(self.program.id,)))
         assert response.status_code == 200
+        response_content = BeautifulSoup(response.content, "html.parser")
+        script_tag = response_content.find("script", {"src": static("js/sortable_select.js")})
+        assert script_tag is not None
+        assert script_tag.has_attr("defer")
 
     def test_custom_course_selection_page(self):
         """ Verify that course selection page loads successfully. """
