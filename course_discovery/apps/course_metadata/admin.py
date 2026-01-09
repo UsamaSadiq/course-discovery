@@ -6,10 +6,11 @@ from django.contrib.admin.utils import model_ngettext
 from django.db.models import Prefetch
 from django.db.utils import IntegrityError
 from django.forms import CheckboxSelectMultiple, ModelForm
+from django.forms.widgets import Script
 from django.http import HttpResponseRedirect
 from django.templatetags.static import static
 from django.urls import re_path, reverse
-from django.utils.html import format_html, html_safe
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from django_object_actions import DjangoObjectActions
 from parler.admin import TranslatableAdmin
@@ -54,11 +55,8 @@ class CurriculumCourseMembershipForm(ModelForm):
         }
 
 
-@html_safe
-class SortableSelectJSPath:
-    def __str__(self):
-        abs_path = static('js/sortable_select.js')
-        return f'<script src="{abs_path}" defer></script>'
+def sortable_select_script():
+    return Script(static('js/sortable_select.js'), defer=True)
 
 
 class ProgramEligibilityFilter(admin.SimpleListFilter):
@@ -237,7 +235,7 @@ class CourseAdmin(DjangoObjectActions, SimpleHistoryAdmin):
         js = (
             'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
             'bower_components/jquery/dist/jquery.min.js',
-            SortableSelectJSPath()
+            sortable_select_script(),
         )
 
 
@@ -588,7 +586,7 @@ class ProgramAdmin(DjangoObjectActions, SimpleHistoryAdmin):
         js = (
             'bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
             'bower_components/jquery/dist/jquery.min.js',
-            SortableSelectJSPath()
+            sortable_select_script(),
         )
 
 
