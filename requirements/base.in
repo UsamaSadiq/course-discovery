@@ -4,6 +4,9 @@ algoliasearch_django
 backoff
 beautifulsoup4
 cairosvg
+cairocffi>=1.6
+cffi>=1.17
+pycparser>=2.21
 contentful
 django
 django-admin-sortable2

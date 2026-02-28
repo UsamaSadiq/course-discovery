@@ -33,10 +33,6 @@ sphinx<6.0.0
 # 1.0.0 has breaking changes
 requests-toolbelt==0.10.1
 
-# Support for backports.zoneinfo in Python 3.9+ is currently minimal
-# https://pypi.org/project/backports.zoneinfo/
-backports.zoneinfo;python_version<"3.9"
-
 # Pillow 10 is causing django-stdimage to break when accessing ANTIALIAS variable on Image
 pillow < 10.0.0
 
